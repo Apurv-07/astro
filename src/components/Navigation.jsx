@@ -37,6 +37,7 @@ const Navigation = () => {
           <div className='h-1 w-7 mt-2 bg-white -rotate-45'/>
           <div className='h-1 w-7 -mt-1 bg-white rotate-[45deg]'/>
           </div>}
+          {/*  */}
           
         </button>
         {hide && <nav className='list-none bg-orange-500 top-[120px] z-10 w-full absolute text-center flex flex-col gap-10 mr-10 font-inter text-[14px] py-5 font-medium sm:hidden'>
