@@ -1,9 +1,14 @@
 import ZodiacCard from "../components/ZodiacCard";
 import { zodiacSigns } from "../data/data";
+import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <div className="flex flex-col justify-center bg-gradient-to-r from-orange-200 to-yellow-100">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="flex flex-col justify-center bg-gradient-to-r from-orange-200 to-yellow-100"
+    >
       <div>
         <h2 className="text-[24px] text-center font-inter font-semibold border-orange-300 border-solid border-y-4">
           Types of Rashi (zodiac signs)
@@ -14,7 +19,7 @@ const About = () => {
           characteristics. The 12 zodiac signs are:
         </p>
       </div>
-      <div className="flex flex-col gap-12  items-center justify-center w-full ">
+      <div className="flex flex-col gap-12 items-center justify-center w-full ">
         {zodiacSigns.map((zodiacSign) => {
           return (
             <ZodiacCard
@@ -28,7 +33,7 @@ const About = () => {
           );
         })}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
