@@ -1,15 +1,20 @@
 import ZodiacCard from "../components/ZodiacCard";
 import { zodiacSigns } from "../data/data";
 import { motion } from "framer-motion";
+import Herosection from "../components/Herosection";
+import moonAstro from "../assets/moon_astrology.jpg";
 
 const About = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="flex flex-col justify-center bg-gradient-to-r from-orange-200 to-yellow-100"
-    >
-      <div>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <Herosection
+        pic={moonAstro}
+        h1={"My services"}
+        p={
+          "Meet with Pandit Jagannath Guruji, in person or online for a holistic consultation. Let Panditji help you amplify the happiness and prosperity in your life through his deep knowledge of Vedic astrology, palmistry, body vibrations and face reading for an enhanced life."
+        }
+      />
+      <div className="px-10 -mt-[400px]">
         <h2 className="text-[24px] text-center font-inter font-semibold border-orange-300 border-solid border-y-4">
           Types of Rashi (zodiac signs)
         </h2>
