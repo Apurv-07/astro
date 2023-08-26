@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import { Routes, Route, useLocation } from "react-router-dom";
@@ -17,6 +17,7 @@ const Navigation = () => {
   function handleClick() {
     setHide(!hide);
   }
+  
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -76,7 +77,7 @@ const Navigation = () => {
           )}
         </button>
         {hide && (
-          <nav className="list-none bg-orange-500 top-[120px] z-10 w-full absolute text-center flex flex-col gap-10 mr-10 font-inter text-[14px] py-5 font-medium sm:hidden">
+          <nav className="list-none animate-[wave_0.6s_ease-in-out] bg-orange-500 top-[120px] z-10 w-full absolute text-center flex flex-col gap-10 mr-10 font-inter text-[14px] py-5 font-medium sm:hidden">
             <Link to="/">
               <li
                 className={`hover:text-red-600 cursor-pointer ${
