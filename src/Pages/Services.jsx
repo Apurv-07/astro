@@ -1,7 +1,6 @@
 // import React from 'react'
 import Herosection from "../components/Herosection";
 import ServiceCard from "../components/ServiceCard";
-import { Card, CardMedia, CardHeader, CardContent } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Carousel from "nuka-carousel";
@@ -18,6 +17,8 @@ import satyanarayanPuja from "../assets/satyanarayana_pooja.jpg";
 import durgaPuja from "../assets/durga_puja.jpg";
 import grihaPravesh from "../assets/griha_pravesh.jpg";
 import mahaMrityunjaya from "../assets/mahamrityunjaya.jpg";
+import Card2 from "../components/Card2";
+import { useEffect, useState } from "react";
 
 const reports = [
   {
@@ -53,13 +54,13 @@ const reports = [
   {
     title: "Health",
     paragraph:
-      ".If you are looking for Vedic solution for health problem, stress or health then consult our astrologer for better and complete solution.",
+      "If you are looking for Vedic solution for health problem, stress or health then consult our astrologer for better and complete solution.",
     image: health,
   },
   {
     title: "Wealth",
     paragraph:
-      ".Money is essential for life and if you always have loss of money or are not able to control money then contact us for immediate solution.",
+      "Money is essential for life and if you always have loss of money or are not able to control money then contact us for immediate solution.",
     image: wealth,
   },
   {
@@ -106,7 +107,16 @@ const typeOfPuja = [
 ];
 
 const Services = () => {
-  let nav = useNavigate();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth < 640) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, []);
+
   return (
     <div>
       <Herosection
@@ -116,7 +126,7 @@ const Services = () => {
           "Meet with Pandit Jagannath Guruji, in person or online for a holistic consultation. Let Panditji help you amplify the happiness and prosperity in your life through his deep knowledge of Vedic astrology, palmistry, body vibrations and face reading for an enhanced life."
         }
       />
-      <div className="px-10 -mt-[400px]">
+      <div className="px-10 max-sm:px-5 -mt-[400px]">
         <div className="">
           <h2 className="text-[24px] font-inter font-semibold border-orange-300 border-solid border-b-4">
             Get accurate solutions
@@ -126,24 +136,23 @@ const Services = () => {
             Live the life you were meant to by clearing obstacles and
             negativities!
           </p>
-          <div className="mb-10  pl-20 pr-20">
+          <div className="mb-10 px-20 max-sm:px-0">
             <Carousel
               autoplay={true}
               enableKeyboardControls={true}
-              slidesToShow={2}
+              slidesToShow={isMobile ? 1 : 2}
               animation="zoom"
               zoomScale={0.8}
               cellAlign="center"
               wrapAround={true}
               defaultControlsConfig={{
-                containerClassName: "-m-10",
+                containerClassName: `-m-10 max-sm:mx-0`,
                 pagingDotsClassName: "relative ml-3 hover:scale-150",
                 nextButtonClassName: "rounded hover:scale-110",
                 prevButtonClassName: "rounded hover:scale-110",
                 nextButtonText: <FaArrowRight />,
                 prevButtonText: <FaArrowLeft />,
               }}
-              className=""
             >
               {reports.map((item, i) => {
                 return (
@@ -157,24 +166,11 @@ const Services = () => {
               })}
             </Carousel>
           </div>
-          <div className="mt-28 mb-10 pl-20 pr-20 gap-16 flex flex-col">
+          <div className="mt-28 mb-10 px-20 gap-16 flex flex-col max-sm:px-0">
             <h2 className="text-center font-bold text-2xl">TYPES OF PUJA</h2>
-            <div className="flex flex-wrap gap-8">
+            <div className="flex flex-wrap gap-8 max-sm:gap-16">
               {typeOfPuja.map((puja) => {
-                return (
-                  <Card sx={{ display: "flex" }}>
-                    <CardMedia
-                      component="img"
-                      sx={{ width: "25rem", height: "15rem", objectFit:'fill' }}
-                      image={puja.image}
-                      alt={puja.title}
-                    />
-                    <CardContent>
-                      <CardHeader title={puja.title} />
-                      <div>{puja.content}</div>
-                    </CardContent>
-                  </Card>
-                );
+                return <Card2 item={puja} />;
               })}
             </div>
           </div>
