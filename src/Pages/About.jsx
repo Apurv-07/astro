@@ -6,7 +6,7 @@ import moonAstro from "../assets/moon_astrology.jpg";
 
 const About = () => {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-4">
       <Herosection
         pic={moonAstro}
         h1={"My services"}
@@ -18,13 +18,13 @@ const About = () => {
         <h2 className="text-[24px] text-center font-inter font-semibold border-orange-300 border-solid border-y-4">
           Types of Rashi (zodiac signs)
         </h2>
-        <p className="mt-5 font-inter text-center p-12">
+        <p className="mt-5 font-inter text-center p-12 max-sm:p-0">
           In astrology, there are 12 types of Rashi (zodiac signs) based on the
           Vedic system. Each Rashi represents a specific energy and has unique
           characteristics. The 12 zodiac signs are:
         </p>
       </div>
-      <div className="flex flex-col gap-12 items-center justify-center w-full ">
+      <div className="flex gap-12 items-center justify-center flex-wrap max-sm:mt-8">
         {zodiacSigns.map((zodiacSign) => {
           return (
             <ZodiacCard
