@@ -3,9 +3,11 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useRef, useState } from "react";
 import Modalnew from "../components/Modalnew";
 import emailjs from '@emailjs/browser';
+import faqData from "../data/faqData";
 
 {
   /* <Link to={{ pathname: "https://example.zendesk.com/hc/en-us/articles/123456789-Privacy-Policies" }} target="_blank" /> */
@@ -51,6 +53,9 @@ const Contact = () => {
   const form = useRef();
 
   let [isOpen, setIsOpen]=useState(false);
+  let [showQ, setShowQ]=useState(false)
+  let [currentId, setCurrentId]=useState(0)
+  let [clicked, setClicked]=useState(false)
   const sendEmail = (e) => {
     e.preventDefault();
     console.log("Function running")
@@ -76,7 +81,7 @@ const Contact = () => {
             backgroundSize: "cover",
           }}
         >
-          {/* Your content goes here */}
+          {/* My content here */}
           <div className="max-md:flex-col flex mt-[200px] p-10 items-center gap-5 bg-[rgba(0,0,0,0.6)]">
             <div className="animate-[wave_2s_ease-in-out]">
               <img
@@ -146,6 +151,25 @@ const Contact = () => {
           </div>
         </section>
         <Modalnew open={isOpen} handleClose={setIsOpen} title={"We'll be in touch with you as soon as possible!"} header={"Thank you. Email sent"} />
+      </div>
+      <div className="relative h-[200px] md:top-[1500px] max-md:top-[224vh] px-4 md:px-10">
+      <h2 className="text-[24px] font-inter font-semibold border-orange-300 border-solid border-y-4 mb-10">
+          Common questions
+        </h2>
+        {faqData.map((que)=>{
+          return (
+            <div key={que.id}>
+              <div className={`flex ${que.id%2==0?"bg-orange-500":"bg-yellow-400"}`}><h1>{que.question}</h1><button onClick={()=>{
+                setShowQ(!showQ)
+                setCurrentId(que.id)
+                if(que.id!=currentId){
+                  setShowQ(true)
+                }
+              }}><ExpandMoreIcon className={`text-[35px] ${showQ && currentId==que.id?"rotate-180":""}`} /></button></div>
+              {showQ && currentId==que.id && <p className="bg-white">{que.answer}</p>}
+            </div>
+          )
+        })}
       </div>
     </div>
   );

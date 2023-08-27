@@ -4,6 +4,10 @@ import Modalnew from '../components/Modalnew';
 import Card1 from '../components/Card1';
 import { useEffect, useRef, useState } from 'react'
 import Button from '../components/Button';
+import YoutubeCard from '../components/YoutubeCard';
+import cardData from '../data/cardData';
+import Card2 from '../components/Card2';
+
 const Home = () => {
     let nav=useNavigate();
     let [isOpen, setIsOpen] = useState(false)
@@ -22,16 +26,15 @@ const Home = () => {
             <Herosection pic={"https://english.cdn.zeenews.com/sites/default/files/2023/02/02/1148680-adiyogi-tw.jpg"} h1={"Pandit Din Dayal"} p={"Pandit Jagannath Guruji is a renowned and talented top Indian astrologer with extensive experience. He offers a genuine range of astrological counselling and fortune-telling with useful predictions in significant events of your life, such as career, employment, business, and finance, issues of health, wealth, and relationships across marriage and compatibility matters (kundali matching), and potent luck, fortune, face, and palm readings to help you successfully navigate life."}/>
         </div>
         {/* section 2 */}
-        <div className='px-10 -mt-[450px] max-sm:-mt-[480px]'>
+        <div className='md:px-10 px-4 -mt-[450px] max-sm:-mt-[480px]'>
             <div className=''>
             <h2 className='text-[24px] font-inter font-semibold border-orange-300 border-solid border-y-4'>Are you looking for impactful, long-lasting astrological solutions? Are you seeking a powerful ally who can offer you guidance and help you fulfil your dreams?</h2>
             <p className='mt-5 font-inter'>Are you trying to find long-lasting, effective astrological remedies? Are you looking for a strong ally that can mentor you and assist you in realising your goals?
                 One of the top astrologers in India, Pandit Jagannath Guruji is a well-known astrologer with a wealth of astrological knowledge. His goals are clear-cut. His predictions are reliable and accurate, and his counsel is consistently goal-oriented. He makes sure to give them the solutions they need because he is aware of the vulnerabilities people encounter in their daily life. For more information on Panditjis services, read on.</p>
                 <div className='flex justify-evenly mt-5 flex-wrap max-sm:gap-4'>
-                    <Card1 />
-                    <Card1 />
-                    <Card1 />
-                    <Card1 />
+                    {cardData.map((item)=>{
+                        return <Card2 item={item} />
+                    })}
                 </div>
                 <Button styles={'-translate-x-1/2 ml-[50%]'} onClick={()=>nav('/services')}>Explore more</Button>
                 
@@ -77,6 +80,27 @@ const Home = () => {
                 {/* </div> */}
                 <Button styles={'-translate-x-1/2 ml-[50%]'} onClick={()=>setText(!text)}>See More</Button>
             </div>
+        </div>
+        {/* section 4 */}
+        <div className='px-4 md:px-10 mb-20'> 
+        <h2 className="text-[24px] mt-10 font-inter font-semibold border-orange-300 border-solid border-b-4">
+            Popular posts:
+        </h2>
+        <div className='flex gap-4 whitespace-nowrap overflow-auto no-scrollbar mt-10'>
+        <style>
+        {`.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }`}
+      </style>
+            <YoutubeCard link={'https://www.youtube.com/embed/tgbNymZ7vqY'} />
+            <YoutubeCard link={'https://www.youtube.com/embed/tgbNymZ7vqY'} />
+            <YoutubeCard link={'https://www.youtube.com/embed/tgbNymZ7vqY'} />
+            <YoutubeCard link={'https://www.youtube.com/embed/tgbNymZ7vqY'} />
+            <YoutubeCard link={'https://www.youtube.com/embed/tgbNymZ7vqY'} />
+            <YoutubeCard link={'https://www.youtube.com/embed/tgbNymZ7vqY'} />
+            <YoutubeCard link={'https://www.youtube.com/embed/tgbNymZ7vqY'} />
+            <YoutubeCard link={'https://www.youtube.com/embed/tgbNymZ7vqY'} />
+        </div>
         </div>
     </div>
   )
