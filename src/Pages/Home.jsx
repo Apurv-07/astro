@@ -33,18 +33,18 @@ const Home = () => {
                     <Card1 />
                     <Card1 />
                 </div>
-                <Button onClick={()=>nav('/services')}>Explore more</Button>
+                <Button styles={'-translate-x-1/2 ml-[50%]'} onClick={()=>nav('/services')}>Explore more</Button>
                 
             </div>
         </div>
         {/* section 3 */}
-        <div className={`mt-10 bg-gradient-to-r from-orange-300 to-yellow-600 flex gap-20 -ml-10 transition-all duration-1000 rounded-3xl ${y>720?"ml-10 mr-10":""}`}>
+        <div className={`mt-10 bg-gradient-to-r from-orange-300 to-yellow-600 flex max-md:flex-col md:gap-20 -ml-10 transition-all duration-1000 rounded-3xl ${y>720?"ml-10 mr-10":""}`}>
             {/* Photo */}
             <div className={`py-10 -mt-40 transition-all duration-1000 inline-block ${y>720 && "mt-0"}`}>
                 <img src="/assets/Pandit_ji_profile.jpeg" alt="Pandit ji" className='w-[400px] h-[500px] rounded-r-[40%]'/>
             </div>
             {/* Description  */}
-            <div className={`w-[50%] transition-all bg-[rgba(0,0,0,0.2)] my-10 ${!text?"h-[490px]":""}`}>
+            <div className={`md:w-[50%] transition-all bg-[rgba(0,0,0,0.2)] my-10 ${!text?"h-[490px]":""}`}>
                 {/* <div className='bg-[rgba(0,0,0,0.2)] relative text-ellipsis max-h-[500px] rounded-xl sm:ml-16 text-center max-sm:w-full px-5 overflow-hidden text-white'> */}
                 {/* <div className='h-[500px] overflow-hidden'> */}
                 <p className={`text-center text-ellipsis p-10 w-full text-white shadow-sm ${text?"relative w-[100%] bg-yellow-300":"overflow-hidden h-[375px]"}`}>
@@ -75,7 +75,7 @@ const Home = () => {
         odio. Curabitur ut varius lacus, eu accumsan orci. Suspendisse tempor
         eleifend est ut malesuada. Sed elementum tempor mi non rutrum. Vivamus</p>
                 {/* </div> */}
-                <Button onClick={()=>setText(!text)}>See More</Button>
+                <Button styles={'-translate-x-1/2 ml-[50%]'} onClick={()=>setText(!text)}>See More</Button>
             </div>
         </div>
     </div>

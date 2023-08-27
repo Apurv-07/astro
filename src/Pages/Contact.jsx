@@ -3,9 +3,8 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import DoneIcon from "@mui/icons-material/Done";
-import { useNavigate } from "react-router";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import Modalnew from "../components/Modalnew";
 import emailjs from '@emailjs/browser';
 
 {
@@ -47,12 +46,11 @@ const Contact = () => {
     WhatsAppIcon: WhatsAppIcon,
   };
   function handleClick(link) {
-    // navigate('')
-    console.log("The current Link", link);
     window.open(`${link}`);
   }
   const form = useRef();
 
+  let [isOpen, setIsOpen]=useState(false);
   const sendEmail = (e) => {
     e.preventDefault();
     console.log("Function running")
@@ -60,7 +58,8 @@ const Contact = () => {
     emailjs.sendForm('service_fh6fpz9', 'template_jc9zq2d', form.current, 'Jt9uyGXeyM1KjR8_c')
       .then((result) => {
         console.log("Email sent")
-          console.log(result.text);
+        setIsOpen(true);
+        console.log(result.text);
       }, (error) => {
           console.log(error.text);
       });
@@ -97,7 +96,7 @@ const Contact = () => {
                 matching), and potent luck, fortune, face, and palm readings to
                 help you successfully navigate life.
               </p>
-              <div className="flex w-[100px]">
+              <div className="flex lg:whitespace-nowrap gap-2 w-[100px]">
                 {/* <Button onClick={handleClick}><FacebookIcon />Facebook</Button>
             <Button onClick={()=>{}}><InstagramIcon />Instagram</Button>
             <Button onClick={()=>{}}><TwitterIcon />Twitter(X)</Button>
@@ -146,6 +145,7 @@ const Contact = () => {
             </form>
           </div>
         </section>
+        <Modalnew open={isOpen} handleClose={setIsOpen} title={"We'll be in touch with you as soon as possible!"} header={"Thank you. Email sent"} />
       </div>
     </div>
   );
