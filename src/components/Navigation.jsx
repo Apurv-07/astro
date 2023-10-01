@@ -9,11 +9,13 @@ import About from "../Pages/About";
 import Contact from "../Pages/Contact";
 import Services from "../Pages/Services";
 import { AnimatePresence } from "framer-motion";
+import Footer from "./Footer";
 const Navigation = () => {
   let path = useLocation();
   let active = path.pathname;
   console.log("The current path", active);
   let [hide, setHide] = useState(false);
+  let [contact, setContact] =useState(false);
   function handleClick() {
     setHide(!hide);
   }
@@ -78,7 +80,7 @@ const Navigation = () => {
         </button>
         {hide && (
           <nav className="list-none animate-[wave_0.6s_ease-in-out] bg-orange-500 top-[120px] z-10 w-full absolute text-center flex flex-col gap-10 mr-10 font-inter text-[14px] py-5 font-medium sm:hidden">
-            <Link to="/">
+            <Link to="/" onClick={()=>setContact(false)}>
               <li
                 className={`hover:text-red-600 cursor-pointer ${
                   active == "/" ? "text-red-600" : ""
@@ -87,7 +89,7 @@ const Navigation = () => {
                 Home
               </li>
             </Link>
-            <Link to="/services">
+            <Link to="/services" onClick={()=>setContact(false)}>
               <li
                 className={`hover:text-red-600 cursor-pointer ${
                   active == "/services" ? "text-red-600" : ""
@@ -101,11 +103,12 @@ const Navigation = () => {
                 className={`hover:text-red-600 cursor-pointer ${
                   active == "/contact-us" ? "text-red-600" : ""
                 }`}
+                onClick={()=>setContact(true)}
               >
                 Contact Us
               </li>
             </Link>
-            <Link to="/about-us">
+            <Link to="/about-us" onClick={()=>setContact(false)}>
               <li
                 className={`hover:text-red-600 cursor-pointer ${
                   active == "/about-us" ? "text-red-600" : ""
@@ -125,6 +128,7 @@ const Navigation = () => {
           <Route path={"/services"} element={<Services />} />
         </Routes>
       </AnimatePresence>
+      <Footer contact={contact} />
     </div>
   );
 };
